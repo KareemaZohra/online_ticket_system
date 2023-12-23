@@ -3,23 +3,36 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <form action="/add-product" method="post">
+                <form action="/book" method="post">
                     @csrf
+                    <select name="location" class="form-select" aria-label="Default select example">
+                        <option selected>Select Location</option>
+                        @foreach($locations as $location)
+                            <option value="{{$location->location}}">{{$location->location}}</option>
+                        @endforeach
+                    </select>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Product Name</label>
-                        <input type="text" name="pname" class="form-control" id="name">
+                        <label for="trip_date" class="form-label">Trip Date</label>
+                        <input type="date" name="trip_date" class="form-control" id="trip_date">
                     </div>
                     <div class="mb-3">
-                        <label for="price" class="form-label">Price</label>
-                        <input type="text" name="price" class="form-control" id="price">
-                    </div>
-                    <div class="mb-3">
-                        <label for="qty" class="form-label">Quantity</label>
-                        <input type="number" name="quantity" class="form-control" id="qty">
+                        <label for="seat_no" class="form-label">Seat Number</label>
+                        <input type="number" name="seat_no" class="form-control" id="seat_no">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+            </div>
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="row">
+                        @for($i = 1; $i<= 36; $i++)
+                        <div class="col-2">
+                            <div class="bus text-center">{{$i}}</div>
+                        </div>
+                        @endfor
+                    </div>
+                </div>
             </div>
         </div>
     </div>

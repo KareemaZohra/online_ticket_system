@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/reservation',[tripController::class,'reservation']);
+Route::post('/book',[tripController::class,'booking']);
