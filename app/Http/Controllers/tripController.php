@@ -45,7 +45,10 @@ class tripController extends Controller
             $seat->trip_id = $latest_trip->id;
             $seat->save();
 
-            return redirect()->back();
+            $reservation = trip::where('id',$latest_trip->id)->with('seats')->first();
+
+           // dd($reservation);
+            return view('success',compact('reservation'));
         }
 
     }

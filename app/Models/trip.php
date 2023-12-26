@@ -12,7 +12,6 @@ class trip extends Model
     protected $table = 'trips';
 
     protected $fillable = ['location','trip_date'];
-
     public function seats(){
         return $this->hasMany(seat_allocation::class, 'trip_id', 'id');
     }
